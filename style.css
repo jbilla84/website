@@ -7,14 +7,14 @@
 }
 
 :root {
-  --text: #1a1a1a;
-  --text-secondary: #555;
-  --text-light: #888;
-  --link: #1a1a1a;
-  --link-hover: #444;
-  --border: #e0e0e0;
-  --bg: #ffffff;
-  --nav-height: 56px;
+  --bg: #f5f0e8;
+  --text: #1a1008;
+  --text-secondary: #5a4e3c;
+  --text-light: #9a8a72;
+  --gold: #b8960c;
+  --border-heavy: #1a1008;
+  --border-light: #c8b898;
+  --nav-height: 52px;
 }
 
 html {
@@ -26,13 +26,14 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: Georgia, 'Times New Roman', serif;
-  line-height: 1.75;
+  line-height: 1.8;
 }
 
-/* ─── Layout ─── */
+/* ─── Header ─── */
 
 .site-header {
-  border-bottom: 1px solid var(--border);
+  border-top: 3px solid var(--border-heavy);
+  border-bottom: 1px solid var(--border-heavy);
   position: sticky;
   top: 0;
   background: var(--bg);
@@ -40,9 +41,9 @@ body {
 }
 
 .header-inner {
-  max-width: 800px;
+  max-width: 840px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 32px;
   height: var(--nav-height);
   display: flex;
   align-items: center;
@@ -51,83 +52,119 @@ body {
 }
 
 .site-name {
-  font-family: system-ui, -apple-system, sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  font-family: Georgia, serif;
+  font-size: 11px;
+  font-weight: normal;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
   color: var(--text);
   text-decoration: none;
   white-space: nowrap;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.site-name::before {
+  content: '◆';
+  color: var(--gold);
+  font-size: 9px;
   flex-shrink: 0;
 }
 
 nav {
   display: flex;
-  gap: 0;
   align-items: center;
+  gap: 2px;
 }
 
 nav a {
-  font-family: system-ui, -apple-system, sans-serif;
-  font-size: 13px;
-  font-weight: 400;
-  color: var(--text-secondary);
+  font-family: Georgia, serif;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-light);
   text-decoration: none;
-  padding: 6px 10px;
-  border-radius: 4px;
-  transition: color 0.15s, background 0.15s;
-  white-space: nowrap;
+  padding: 5px 9px;
+  transition: color 0.15s;
 }
 
 nav a:hover {
   color: var(--text);
-  background: #f4f4f4;
 }
 
 nav a.active {
   color: var(--text);
-  font-weight: 500;
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 4px;
 }
 
+/* ─── Decorative rule ─── */
+
+.deco-rule {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.deco-rule::before,
+.deco-rule::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--gold);
+}
+
+.deco-rule span {
+  color: var(--gold);
+  font-size: 10px;
+}
+
+/* ─── Main layout ─── */
+
 .main-content {
-  max-width: 800px;
+  max-width: 840px;
   margin: 0 auto;
-  padding: 56px 24px 96px;
+  padding: 52px 32px 96px;
 }
 
 /* ─── Typography ─── */
 
-h1 {
-  font-family: system-ui, -apple-system, sans-serif;
-  font-size: 22px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  margin-bottom: 32px;
-  color: var(--text);
-}
-
 h2 {
-  font-family: system-ui, -apple-system, sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
+  font-family: Georgia, serif;
+  font-size: 9px;
+  font-weight: normal;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--text-light);
-  margin-top: 48px;
-  margin-bottom: 20px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--border);
+  margin-top: 52px;
+  margin-bottom: 6px;
+  padding-bottom: 0;
+  text-align: left;
 }
 
 h2:first-child {
   margin-top: 0;
 }
 
+/* gold line under each section heading */
+h2::after {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--gold);
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
 p {
   font-size: 15px;
-  line-height: 1.8;
+  line-height: 1.85;
   color: var(--text);
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 p:last-child {
@@ -135,19 +172,20 @@ p:last-child {
 }
 
 a {
-  color: var(--link);
+  color: var(--text);
   text-decoration: underline;
-  text-decoration-color: var(--border);
+  text-decoration-color: var(--gold);
   text-underline-offset: 3px;
-  transition: text-decoration-color 0.15s;
+  transition: text-decoration-color 0.15s, color 0.15s;
 }
 
 a:hover {
-  text-decoration-color: var(--text);
+  color: var(--text-secondary);
+  text-decoration-color: var(--text-secondary);
 }
 
 strong {
-  font-weight: 600;
+  font-weight: bold;
 }
 
 em {
@@ -162,10 +200,20 @@ em {
 
 .pub-list li {
   font-size: 15px;
-  line-height: 1.8;
-  padding: 12px 0;
-  border-bottom: 1px solid #f0f0f0;
+  line-height: 1.85;
+  padding: 14px 0 14px 16px;
+  border-bottom: 1px solid var(--border-light);
   color: var(--text);
+  position: relative;
+}
+
+.pub-list li::before {
+  content: '◆';
+  position: absolute;
+  left: 0;
+  top: 18px;
+  font-size: 6px;
+  color: var(--gold);
 }
 
 .pub-list li:last-child {
@@ -183,8 +231,18 @@ em {
 }
 
 .press-list li {
-  padding: 14px 0;
-  border-bottom: 1px solid #f0f0f0;
+  padding: 14px 0 14px 16px;
+  border-bottom: 1px solid var(--border-light);
+  position: relative;
+}
+
+.press-list li::before {
+  content: '◆';
+  position: absolute;
+  left: 0;
+  top: 18px;
+  font-size: 6px;
+  color: var(--gold);
 }
 
 .press-list li:last-child {
@@ -193,16 +251,17 @@ em {
 
 .press-title {
   font-size: 15px;
-  font-weight: 400;
-  margin-bottom: 3px;
+  margin-bottom: 4px;
   display: block;
 }
 
 .press-meta {
-  font-family: system-ui, -apple-system, sans-serif;
-  font-size: 13px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--text-light);
   font-style: normal;
+  font-family: Georgia, serif;
 }
 
 /* ─── Pedagogy table ─── */
@@ -213,59 +272,86 @@ em {
 }
 
 .course-grid td {
-  padding: 10px 0;
+  padding: 12px 0;
   font-size: 15px;
   vertical-align: top;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--border-light);
 }
 
 .course-grid td:first-child {
-  font-family: system-ui, -apple-system, sans-serif;
-  font-size: 13px;
-  color: var(--text-light);
-  font-weight: 500;
+  font-family: Georgia, serif;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--gold);
   width: 110px;
   padding-right: 20px;
+  padding-top: 15px;
 }
 
 .course-grid tr:last-child td {
   border-bottom: none;
 }
 
-/* ─── Profile specifics ─── */
+/* ─── Profile photo ─── */
 
-.profile-intro {
-  margin-bottom: 32px;
+.profile-photo {
+  float: left;
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  object-position: center top;
+  border: 2px solid var(--gold);
+  margin: 4px 32px 24px 0;
+  display: block;
 }
+
+/* ─── Affiliations ─── */
+
+.affiliations {
+  margin-top: 8px;
+}
+
+.affiliations p {
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: var(--text-secondary);
+}
+
+.affiliations p:last-child {
+  margin-bottom: 0;
+}
+
+/* ─── Profile specifics ─── */
 
 .social-links {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   margin-top: 28px;
 }
 
 .social-link {
-  font-family: system-ui, -apple-system, sans-serif;
-  font-size: 13px;
-  font-weight: 500;
+  font-family: Georgia, serif;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   color: var(--text-secondary);
   text-decoration: none;
-  border: 1px solid var(--border);
-  padding: 6px 12px;
-  border-radius: 20px;
+  border: 1px solid var(--border-light);
+  padding: 7px 16px;
   transition: border-color 0.15s, color 0.15s;
 }
 
 .social-link:hover {
-  border-color: var(--text-secondary);
+  border-color: var(--gold);
   color: var(--text);
   text-decoration: none;
   text-decoration-color: transparent;
 }
 
 .updated {
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: Georgia, serif;
   font-size: 12px;
+  font-style: italic;
   color: var(--text-light);
   margin-top: 24px;
 }
@@ -273,16 +359,29 @@ em {
 /* ─── Footer ─── */
 
 .site-footer {
-  border-top: 1px solid var(--border);
-  padding: 24px;
+  border-top: 1px solid var(--border-heavy);
+  border-bottom: 3px solid var(--border-heavy);
+  padding: 20px 32px;
   text-align: center;
 }
 
 .site-footer p {
-  font-family: system-ui, -apple-system, sans-serif;
-  font-size: 12px;
+  font-family: Georgia, serif;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
   color: var(--text-light);
   margin: 0;
+}
+
+.site-footer p::before {
+  content: '◆  ';
+  color: var(--gold);
+}
+
+.site-footer p::after {
+  content: '  ◆';
+  color: var(--gold);
 }
 
 /* ─── Responsive ─── */
@@ -292,25 +391,20 @@ em {
     flex-direction: column;
     height: auto;
     padding: 12px 16px;
-    gap: 8px;
+    gap: 10px;
     align-items: flex-start;
   }
 
   nav {
     flex-wrap: wrap;
-    gap: 2px;
   }
 
   nav a {
-    font-size: 12px;
-    padding: 4px 8px;
+    font-size: 8px;
+    padding: 4px 6px;
   }
 
   .main-content {
     padding: 32px 16px 64px;
-  }
-
-  h1 {
-    font-size: 19px;
   }
 }
